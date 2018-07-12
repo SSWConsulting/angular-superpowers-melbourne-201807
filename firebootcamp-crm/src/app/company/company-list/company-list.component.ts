@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Company } from 'src/app/company/company';
+import { CompanyService } from '../company.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'fbc-company-list',
@@ -8,20 +10,19 @@ import { Company } from 'src/app/company/company';
 })
 export class CompanyListComponent implements OnInit {
 
-  constructor() { }
 
-  companies : Company[];
+  constructor(
+    private companyService: CompanyService,
+    private httpClient: HttpClient
+  ) {}
+
+
+  companies: Company[];
 
   ngOnInit() {
-    this.companies = this.getCompanies();
+    this.companyService.getCompanies()
+      .subscribe(next => this.companies = next);
   }
 
-  getCompanies() : Company[]{
-    return [
-      {name: "Company A", phone: 1234, email: "CompanyA@ssw.com.au"},
-      {name: "Company B", phone: 1234, email: "CompanyB@ssw.com.au"},
-      {name: "Company C", phone: 1234, email: "CompanyC@ssw.com.au"},
-    ]
-  }
 
 }
