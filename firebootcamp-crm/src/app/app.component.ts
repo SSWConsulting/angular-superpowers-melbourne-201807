@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit {
 
-  title = 'fbc';
+  title = 'Melbourne';
   companyCount$: Observable<number>;
 
   constructor(
