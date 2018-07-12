@@ -27,6 +27,12 @@ export class CompanyEditComponent implements OnInit {
     this.companyId = ~~(this.activatedRoute.snapshot.params['id']);
     this.isNewCompany = this.companyId === 0;
     this.buildForm();
+
+    if(!this.isNewCompany){
+      this.companyService.getCompany(this.companyId).subscribe(c => {
+        this.companyForm.patchValue(c);
+      });
+    }
   }
 
   buildForm() {
@@ -41,6 +47,14 @@ export class CompanyEditComponent implements OnInit {
     if (this.isNewCompany) {
       this.companyService.addCompany(this.companyForm.value)
       .subscribe(c => this.router.navigate(['/company/list']));
+    }else{
+      const newCompany = {...this.companyForm.value, id: this.companyId};
+
+      this.companyService.updateCompany(newCompany)
+      .subscribe(c => {
+        this.router.navigate(['/company/list'])
+        // this.router.navigateByUrl('/company/list')
+      });
     }
   }
 
