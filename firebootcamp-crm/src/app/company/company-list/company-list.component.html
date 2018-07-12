@@ -1,0 +1,35 @@
+<h1 class="titleClass"> Company </h1>
+<button class="btn btn-success float-right">Add</button>
+
+<table class="table table-striped">
+  <thead>
+    <th>
+      Name
+    </th>
+    <th>
+      Phone
+    </th>
+    <th>
+      Email
+    </th>
+    <th>
+    </th>
+  </thead>
+  <tbody>
+    <tr *ngFor='let company of companies'>
+      <td>
+        {{ company.name }}
+      </td>
+      <td>
+        {{ company.phone }}
+      </td>
+      <td>
+        {{ company.email }}
+      </td>
+      <td>
+        <button class="btn btn-default">Edit</button>
+        <button class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

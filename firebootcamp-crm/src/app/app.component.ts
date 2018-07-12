@@ -7,10 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'fbc';
-
-  keyPressed($event) {
-    // console.log($event);
-    this.title = $event.target.value;
-  }
-
 }
