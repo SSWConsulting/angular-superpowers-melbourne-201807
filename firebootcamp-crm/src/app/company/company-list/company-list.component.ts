@@ -10,9 +10,7 @@ import {takeWhile} from 'rxjs/operators';
   templateUrl: './company-list.component.html',
   styleUrls: ['./company-list.component.scss']
 })
-export class CompanyListComponent implements OnInit, OnDestroy  {
-
-
+export class CompanyListComponent implements OnInit {
 
   constructor(
     private companyService: CompanyService,
@@ -22,12 +20,16 @@ export class CompanyListComponent implements OnInit, OnDestroy  {
   companies$: Observable<Company[]>;
 
   ngOnInit() {
+    this.initCompanies();
+  }
+
+  initCompanies(){
     this.companies$ = this.companyService.getCompanies();
   }
 
-
-  ngOnDestroy(): void {
-    this.componentExists = false;
+  deleteCompany(id: number){
+    this.companyService.deleteCompany(id)
+    .subscribe(c => this.initCompanies());
   }
 
 }

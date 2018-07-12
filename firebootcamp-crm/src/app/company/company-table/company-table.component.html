@@ -1,0 +1,34 @@
+<h4> This is a {{ componentName }}</h4>
+
+<table class="table table-striped">
+  <thead>
+    <th>
+      Name
+    </th>
+    <th>
+      Phone
+    </th>
+    <th>
+      Email
+    </th>
+    <th>
+    </th>
+  </thead>
+  <tbody>
+    <tr *ngFor='let company of companies$ | async'>
+      <td>
+        {{ company.name }}
+      </td>
+      <td>
+        {{ company.phone }}
+      </td>
+      <td>
+        {{ company.email }}
+      </td>
+      <td>
+        <button class="btn btn-default">Edit</button>
+        <button class="btn btn-danger" (click)="deleteCompany(company.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
