@@ -1,5 +1,6 @@
 <h1 class="titleClass"> Company </h1>
-<button class="btn btn-success float-right">Add</button>
+
+<button class="btn btn-success float-right" [routerLink]="['/company/company-edit', 0]">Add</button>
 
 <fbc-company-table [companies$]="companies$"
 [componentName]="'My custom component name !'"

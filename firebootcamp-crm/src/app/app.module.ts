@@ -8,17 +8,21 @@ import { CompanyListComponent } from './company/company-list/company-list.compon
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { CompanyTableComponent } from './company/company-table/company-table.component';
+import { CompanyEditComponent } from './company/company-edit/company-edit.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     CompanyListComponent,
-    CompanyTableComponent
+    CompanyTableComponent,
+    CompanyEditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     NgbModule.forRoot(),
     HttpClientModule
   ],

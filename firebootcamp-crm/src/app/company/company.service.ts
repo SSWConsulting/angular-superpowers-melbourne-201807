@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Company } from './company';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -20,6 +20,12 @@ export class CompanyService {
     .pipe(
       catchError(this.errorHandler)
     );
+  }
+
+  addCompany(company: Company): Observable<Company> {
+    return this.httpClient.post<Company>(
+      `${this.API_BASE}/company`, company, { headers: new HttpHeaders().set('content-type', 'application/json') }
+    ).pipe(catchError(this.errorHandler));
   }
 
   deleteCompany(id: number){
