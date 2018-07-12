@@ -16,7 +16,7 @@
     </th>
   </thead>
   <tbody>
-    <tr *ngFor='let company of companies'>
+    <tr *ngFor='let company of companies$ | async'>
       <td>
         {{ company.name }}
       </td>
